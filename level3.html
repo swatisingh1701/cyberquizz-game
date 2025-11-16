@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberQuizz - Level 3</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>CyberQuizz</h1>
+    <h2>Level 3: Online Shopping Scam</h2>
+
+    <p><b>Story:</b> You find a website offering AirPods at 80% off!  
+    The site looks new and only accepts online payment. Should you trust it?</p>
+
+    <form id="quizForm">
+      <div class="question">
+        <p>(1) What should you check before buying from a new website?</p>
+        <label><input type="radio" name="q1" value="A"> A) Website URL (https)</label><br>
+        <label><input type="radio" name="q1" value="B"> B) Only product photos</label><br>
+        <label><input type="radio" name="q1" value="C"> C) Number of discounts</label>
+      </div>
+
+      <div class="question">
+        <p>(2) You paid online but didn’t get the product. What should you do?</p>
+        <label><input type="radio" name="q2" value="A"> A) Message the seller repeatedly</label><br>
+        <label><input type="radio" name="q2" value="B"> B) Report to cybercrime portal immediately</label><br>
+        <label><input type="radio" name="q2" value="C"> C) Wait forever</label>
+      </div>
+
+      <div class="question">
+        <p>(3) Which is a safer way to shop online?</p>
+        <label><input type="radio" name="q3" value="A"> A) Cash on Delivery on trusted sites</label><br>
+        <label><input type="radio" name="q3" value="B"> B) Share card details on random sites</label><br>
+        <label><input type="radio" name="q3" value="C"> C) Click every offer link</label>
+      </div>
+
+      <button type="button" onclick="checkAnswers()">✅ Submit Answers</button>
+    </form>
+
+    <!-- Result box (hidden initially) -->
+    <div id="resultBox" style="display:none;">
+      <h3 id="resultText"></h3>
+
+      <div id="badgeBox" style="display:none;">
+        <h3>🎖 Badge Unlocked: Smart Shopper</h3>
+        <img src="badgelevel3.png" width="120" alt="Smart Shopper Badge">
+      </div>
+
+      <br>
+      <a href="level4.html" class="next-btn" id="nextLevelBtn" style="display:none;">Next Level ➡️</a>
+    </div>
+  </div>
+
+  <script>
+    function checkAnswers() {
+      // Correct answers
+      const correct = { q1: "A", q2: "B", q3: "A" };
+      let score = 0;
+
+      for (let q in correct) {
+        const chosen = document.querySelector(`input[name="${q}"]:checked`);
+        if (chosen && chosen.value === correct[q]) score++;
+      }
+
+      const resultBox = document.getElementById("resultBox");
+      const badgeBox = document.getElementById("badgeBox");
+      const nextLevelBtn = document.getElementById("nextLevelBtn");
+      const resultText = document.getElementById("resultText");
+
+      resultBox.style.display = "block";
+
+      if (score === 3) {
+        resultText.textContent = "🎉 Perfect! You’re a Smart Shopper!";
+        badgeBox.style.display = "block";
+        nextLevelBtn.style.display = "inline-block";
+      } else {
+        resultText.textContent = "⚠️ Some answers are wrong. Try again!";
+        badgeBox.style.display = "none";
+        nextLevelBtn.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>

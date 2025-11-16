@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberQuizz - Level 5</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>CyberQuizz</h1>
+    <h2>Level 5: Banking & UPI Fraud 💳</h2>
+
+    <p><b>Story:</b> You get a call from someone claiming to be your bank manager.  
+    They ask for your OTP to unblock your account. Can you protect yourself?</p>
+
+    <form id="quizForm">
+      <div class="question">
+        <p>(1) The caller asks for OTP to unblock your card. What do you do?</p>
+        <label><input type="radio" name="q1" value="A"> A) Share OTP</label><br>
+        <label><input type="radio" name="q1" value="B"> B) Never share OTP</label><br>
+        <label><input type="radio" name="q1" value="C"> C) Ask them to call later</label>
+      </div>
+
+      <div class="question">
+        <p>(2) You receive a message saying “Claim ₹5000 cashback!” What’s right?</p>
+        <label><input type="radio" name="q2" value="A"> A) Click immediately</label><br>
+        <label><input type="radio" name="q2" value="B"> B) Check official banking app</label><br>
+        <label><input type="radio" name="q2" value="C"> C) Forward to friends</label>
+      </div>
+
+      <div class="question">
+        <p>(3) Which is the safest way to make online payments?</p>
+        <label><input type="radio" name="q3" value="A"> A) Using public Wi-Fi</label><br>
+        <label><input type="radio" name="q3" value="B"> B) Verified UPI apps</label><br>
+        <label><input type="radio" name="q3" value="C"> C) Random payment links</label>
+      </div>
+
+      <button type="button" onclick="checkAnswers()">✅ Submit Answers</button>
+    </form>
+
+    <!-- Result Box -->
+    <div id="resultBox" style="display:none;">
+      <h3 id="resultText"></h3>
+
+      <div id="badgeBox" style="display:none;">
+        <h3>🎖 Final Badge Unlocked: Cyber Guardian</h3>
+        <img src="finalbadge.png" width="120" alt="Cyber Guardian Badge">
+      </div>
+
+      <br>
+      <a href="certificate.html" class="next-btn" id="certBtn" style="display:none;">🏆 Get Your Certificate</a>
+    </div>
+  </div>
+
+  <script>
+    function checkAnswers() {
+      // Correct options
+      const correct = { q1: "B", q2: "B", q3: "B" };
+      let score = 0;
+
+      for (let q in correct) {
+        const chosen = document.querySelector(`input[name="${q}"]:checked`);
+        if (chosen && chosen.value === correct[q]) score++;
+      }
+
+      const resultBox = document.getElementById("resultBox");
+      const badgeBox = document.getElementById("badgeBox");
+      const certBtn = document.getElementById("certBtn");
+      const resultText = document.getElementById("resultText");
+
+      resultBox.style.display = "block";
+
+      if (score === 3) {
+        resultText.textContent = "🎉 Excellent! You’ve completed all levels safely!";
+        badgeBox.style.display = "block";
+        certBtn.style.display = "inline-block";
+      } else {
+        resultText.textContent = "⚠️ Some answers are wrong. Try again!";
+        badgeBox.style.display = "none";
+        certBtn.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>

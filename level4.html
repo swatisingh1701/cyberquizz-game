@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberQuizz - Level 4</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>CyberQuizz</h1>
+    <h2>Level 4: Social Media Safety</h2>
+
+    <p><b>Story:</b> You are scrolling through social media when some strange activities catch your attention.  
+    Let's see how safely you can handle these online traps!</p>
+
+    <form id="quizForm">
+      <div class="question">
+        <p>(1) A stranger sends you a friend request and asks for your phone number.</p>
+        <label><input type="radio" name="q1" value="A"> A) Share your number</label><br>
+        <label><input type="radio" name="q1" value="B"> B) Block and report</label><br>
+        <label><input type="radio" name="q1" value="C"> C) Chat for fun</label>
+      </div>
+
+      <div class="question">
+        <p>(2) A post says “Win iPhone! Just share your OTP.” What will you do?</p>
+        <label><input type="radio" name="q2" value="A"> A) Share OTP</label><br>
+        <label><input type="radio" name="q2" value="B"> B) Report the post</label><br>
+        <label><input type="radio" name="q2" value="C"> C) Tag friends</label>
+      </div>
+
+      <div class="question">
+        <p>(3) What keeps your account most safe?</p>
+        <label><input type="radio" name="q3" value="A"> A) Using easy passwords</label><br>
+        <label><input type="radio" name="q3" value="B"> B) Two-factor authentication</label><br>
+        <label><input type="radio" name="q3" value="C"> C) Posting personal details</label>
+      </div>
+
+      <button type="button" onclick="checkAnswers()">✅ Submit Answers</button>
+    </form>
+
+    <!-- Result box (hidden initially) -->
+    <div id="resultBox" style="display:none;">
+      <h3 id="resultText"></h3>
+
+      <div id="badgeBox" style="display:none;">
+        <h3>🎖 Badge Unlocked: Social Shield</h3>
+        <img src="badgelevel4.png" width="120" alt="Social Shield Badge">
+      </div>
+
+      <br>
+      <a href="finallevel.html" class="next-btn" id="nextLevelBtn" style="display:none;">Go to Final Level ➡️</a>
+    </div>
+  </div>
+
+  <script>
+    function checkAnswers() {
+      // Correct answers
+      const correct = { q1: "B", q2: "B", q3: "B" };
+      let score = 0;
+
+      for (let q in correct) {
+        const chosen = document.querySelector(`input[name="${q}"]:checked`);
+        if (chosen && chosen.value === correct[q]) score++;
+      }
+
+      const resultBox = document.getElementById("resultBox");
+      const badgeBox = document.getElementById("badgeBox");
+      const nextLevelBtn = document.getElementById("nextLevelBtn");
+      const resultText = document.getElementById("resultText");
+
+      resultBox.style.display = "block";
+
+      if (score === 3) {
+        resultText.textContent = "🎉 Excellent! You’ve earned the Social Shield badge!";
+        badgeBox.style.display = "block";
+        nextLevelBtn.style.display = "inline-block";
+      } else {
+        resultText.textContent = "⚠️ Some answers are wrong. Try again!";
+        badgeBox.style.display = "none";
+        nextLevelBtn.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>

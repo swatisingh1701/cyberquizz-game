@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberQuizz - Level 2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>CyberQuizz</h1>
+    <h2>Level 2: Fake Job Offer Scam</h2>
+
+    <p><b>Story:</b> You get a message from an unknown HR saying,  
+      “You’re selected for a part-time job! Just pay ₹999 as registration fee.”  
+      Looks exciting, but is it real?</p>
+
+    <form id="quizForm">
+      <div class="question">
+        <p>(1) What’s a clear red flag in job offer messages?</p>
+        <label><input type="radio" name="q1" value="A"> A) Asking for money before joining</label><br>
+        <label><input type="radio" name="q1" value="B"> B) Sending job details by email</label><br>
+        <label><input type="radio" name="q1" value="C"> C) Asking for resume</label>
+      </div>
+
+      <div class="question">
+        <p>(2) A company asks you to send your documents on WhatsApp. You should:</p>
+        <label><input type="radio" name="q2" value="A"> A) Send immediately</label><br>
+        <label><input type="radio" name="q2" value="B"> B) Verify through the official website first</label><br>
+        <label><input type="radio" name="q2" value="C"> C) Ignore verification</label>
+      </div>
+
+      <div class="question">
+        <p>(3) What’s the safe way to apply for jobs online?</p>
+        <label><input type="radio" name="q3" value="A"> A) Use official job portals only</label><br>
+        <label><input type="radio" name="q3" value="B"> B) Reply to all random emails</label><br>
+        <label><input type="radio" name="q3" value="C"> C) Share OTPs to confirm</label>
+      </div>
+
+      <button type="button" onclick="checkAnswers()">✅ Submit Answers</button>
+    </form>
+
+    <!-- Result box (hidden initially) -->
+    <div id="resultBox" style="display:none;">
+      <h3 id="resultText"></h3>
+
+      <div id="badgeBox" style="display:none;">
+        <h3>🎖 Badge Unlocked: Job Scam Buster</h3>
+        <img src="badgelevel2.jpeg" width="120" alt="Job Scam Buster Badge">
+      </div>
+
+      <br>
+      <a href="level3.html" class="next-btn" id="nextLevelBtn" style="display:none;">Next Level ➡️</a>
+    </div>
+  </div>
+
+  <script>
+    function checkAnswers() {
+      const correct = { q1: "A", q2: "B", q3: "A" };
+      let score = 0;
+
+      for (let q in correct) {
+        const chosen = document.querySelector(`input[name="${q}"]:checked`);
+        if (chosen && chosen.value === correct[q]) score++;
+      }
+
+      const resultBox = document.getElementById("resultBox");
+      const badgeBox = document.getElementById("badgeBox");
+      const nextLevelBtn = document.getElementById("nextLevelBtn");
+      const resultText = document.getElementById("resultText");
+
+      resultBox.style.display = "block";
+
+      if (score === 3) {
+        resultText.textContent = "🎉 Perfect! All answers correct.";
+        badgeBox.style.display = "block";
+        nextLevelBtn.style.display = "inline-block";
+      } else {
+        resultText.textContent = "⚠️ Some answers are wrong. Try again!";
+        badgeBox.style.display = "none";
+        nextLevelBtn.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>

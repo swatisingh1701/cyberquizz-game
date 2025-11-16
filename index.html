@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberQuizz - Level 1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Welcome to CyberQuizz</h1>
+    <p>Hey MyFriend! Ready to begin your Cyber Safety Adventure? Let’s start with Level 1.</p>
+
+    <!-- Begin Button -->
+    <button id="beginBtn" onclick="startLevel1()">🎮 Begin Game</button>
+
+    <!-- LEVEL 1 -->
+    <section id="level1" style="display:none;">
+      <h2>Level 1: Suspicious Email Alert</h2>
+      <p><b>Story:</b> You receive an unexpected email that says “Your account has been blocked! Click here to verify.”  
+      The sender name looks real, but the link feels odd. Can you make the right choices?</p>
+
+      <form id="quizForm">
+        <div class="question">
+          <p>(1) What is the first thing you should check in a suspicious email?</p>
+          <label><input type="radio" name="q1" value="A"> A) The sender’s actual email address</label><br>
+          <label><input type="radio" name="q1" value="B"> B) The color of the logo</label><br>
+          <label><input type="radio" name="q1" value="C"> C) The number of emojis used</label>
+        </div>
+
+        <div class="question">
+          <p>(2) The email link says “www.yourb4nklogin.com”. What should you do?</p>
+          <label><input type="radio" name="q2" value="A"> A) Click it fast</label><br>
+          <label><input type="radio" name="q2" value="B"> B) Ignore and check the real bank site</label><br>
+          <label><input type="radio" name="q2" value="C"> C) Forward it to friends</label>
+        </div>
+
+        <div class="question">
+          <p>(3) What’s the best way to verify if an email is genuine?</p>
+          <label><input type="radio" name="q3" value="A"> A) Reply and ask</label><br>
+          <label><input type="radio" name="q3" value="B"> B) Call or visit the official website directly</label><br>
+          <label><input type="radio" name="q3" value="C"> C) Ignore and delete all emails</label>
+        </div>
+
+        <button type="button" onclick="checkAnswers()">✅ Submit Answers</button>
+      </form>
+
+      <!-- Result box (hidden initially) -->
+      <div id="resultBox" style="display:none;">
+        <h3 id="resultText"></h3>
+
+        <div id="badgeBox" style="display:none;">
+          <h3>🎖 Badge Unlocked: Phish Finder</h3>
+          <img src="badgelevel1.png" width="120" alt="Phish Finder Badge">
+        </div>
+
+        <br>
+        <a href="level2.html" class="next-btn" id="nextLevelBtn" style="display:none;">Next Level ➡️</a>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Start button
+    function startLevel1() {
+      document.getElementById("level1").style.display = "block";
+      document.getElementById("beginBtn").style.display = "none";
+    }
+
+    // Answer checking logic
+    function checkAnswers() {
+      const correct = { q1: "A", q2: "B", q3: "B" };
+      let score = 0;
+
+      for (let q in correct) {
+        const chosen = document.querySelector(`input[name="${q}"]:checked`);
+        if (chosen && chosen.value === correct[q]) score++;
+      }
+
+      const resultBox = document.getElementById("resultBox");
+      const badgeBox = document.getElementById("badgeBox");
+      const nextLevelBtn = document.getElementById("nextLevelBtn");
+      const resultText = document.getElementById("resultText");
+
+      resultBox.style.display = "block";
+
+      if (score === 3) {
+        resultText.textContent = "🎉 Excellent! All answers are correct.";
+        badgeBox.style.display = "block";
+        nextLevelBtn.style.display = "inline-block";
+      } else {
+        resultText.textContent = "⚠️ Some answers are wrong. Please try again!";
+        badgeBox.style.display = "none";
+        nextLevelBtn.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>
