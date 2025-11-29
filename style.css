@@ -1,0 +1,85 @@
+/* CyberQuizz */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: rgb(10, 10, 10);   /* darker background */
+  color: rgb(230, 230, 230);
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 700px;
+  background-color: rgb(20, 20, 20);   /* deep dark box */
+  margin: 50px auto;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+}
+
+h1 {
+  color: rgb(0, 200, 255);   /*  glow color */
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+h2 {
+  color: rgb(100, 220, 255);
+  margin-top: 20px;
+}
+
+p {
+  color: rgb(210, 210, 210);
+  line-height: 1.6;
+}
+
+button, .next-btn {
+  background-color: rgb(0, 200, 255);
+  color: rgb(10, 10, 10);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 20px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+button:hover, .next-btn:hover {
+  background-color: rgb(0, 150, 200);
+}
+
+.question {
+  text-align: left;
+  margin: 20px 0;
+  background-color: rgb(28, 28, 28);   /* slightly lighter section */
+  padding: 15px;
+  border-radius: 6px;
+  border-left: 3px solid rgb(0, 200, 255);
+}
+
+.question p {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+label {
+  display: block;
+  margin: 6px 0;
+  cursor: pointer;
+  color: rgb(220, 220, 220);
+}
+
+label:hover {
+  color: rgb(0, 200, 255);
+}
+
+.note {
+  font-style: italic;
+  color: rgb(160, 160, 160);
+  margin-top: 20px;
+  border-top: 1px solid rgb(50, 50, 50);
+  padding-top: 15px;
+}
