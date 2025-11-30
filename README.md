@@ -1,4 +1,4 @@
-# CyberQuiz – Cybersecurity Quiz Game
+# CyberQuizz – Cybersecurity Awareness Quiz Game
 
 This is a simple and interactive cybersecurity quiz game built using HTML, CSS, and JavaScript.  
 The quiz tests a user’s basic cybersecurity awareness through multiple-choice questions.
